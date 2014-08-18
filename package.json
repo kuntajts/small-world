@@ -18,5 +18,9 @@
     "realtime"
   ],
   "author": "Jordan T. Smith",
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+    "node": "0.10.30",
+    "npm": "1.4.21"
+  }
 }
