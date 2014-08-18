@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta id="viewport" name="viewport" content ="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="realtime instagram photos from colleges around the US">
+    <meta name="author" content="Jordan Smith">
+    <link href="css/bootstrap/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+    <title>Small World</title>
+    <script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div style="float:left;">
+            <h1>Project V: Small World</h1>
+            <div class="selectBoxContainer">
+                <select class="selectBox">
+                </select>
+            </div>
+        </div>
+        <!--<button class="btn btn-default addButton">Add PICTURE</button>--><iframe style="float:right; height:80px; margin-top:20px;" class="hidden-xs" src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.smallworld.jordantsmith.net%2F&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=80&amp;appId=374541719349165" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:80px;" allowTransparency="true"></iframe>
+    </div>
+
+    <div class="container" id="pictures"></div>
+    <div class="footer">
+        <div class="container">
+            <button id="hideFooter" class="btn btn-default visible-xs">Hide</button>
+            <h1 id="currentTime"></div>
+        </div>
+    </div>
+    <script src="/js/main.js"></script>
+</body>
+</html>
