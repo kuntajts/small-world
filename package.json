@@ -1,0 +1,22 @@
+{
+  "name": "small-world",
+  "version": "0.0.4",
+  "description": "A way to view realtime instagram photos at different college campuses",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@heroku.com:small-world.git"
+  },
+  "keywords": [
+    "instagram",
+    "node",
+    "college",
+    "realtime"
+  ],
+  "author": "Jordan T. Smith",
+  "license": "ISC"
+}
