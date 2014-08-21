@@ -9,20 +9,8 @@ var errorhandler = require('errorhandler');
 var methodOverride = require('method-override');
 var intervalID;
 
-var instaFeeds = [
-	{
-		name: "ithaca",
-		data: require('./routes/instagram/ithaca')
-	},
-	{
-		name: "psu",
-		data: require('./routes/instagram/psu')
-	},
-	{
-		name: "harvard",
-		data: require('./routes/instagram/harvard')
-	}
-];
+var feedsAndPasswords = require('./feedsAndPasswords');
+var instaFeeds = feedsAndPasswords.getInstaFeeds();
 
 var instaFeedNames = [
 	{
@@ -66,9 +54,9 @@ io.on('connection', function (socket) {
 	});
 });
 
-for(var i = 0; i < instaFeeds.length; i++) {
-	var data = instaFeeds[i].data;
-	var name = instaFeeds[i].name;
+for(var i in instaFeeds) {
+	var data = i.data;
+	var name = i.name;
 	var callback = '/callback' + name;
 
 	app.get(callback, data.handshake);
