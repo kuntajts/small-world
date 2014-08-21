@@ -1,5 +1,5 @@
 (function(){
-	var socket = io.connect('http://smallworld.jordantsmith.net');
+	var socket = io();
 	var Insta = Insta || {};
 	var instaFeeds;
 

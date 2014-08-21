@@ -39,6 +39,17 @@ app.use(bodyParser.json());
 app.use(errorhandler());
 app.use(methodOverride());
 
+io.set("transports", [
+	'websocket', 
+	'polling',
+	'xhr-polling',
+	'flashsocket',
+	'htmlfile',
+	'jsonp-polling'
+	]
+);
+io.set("polling duration", 10);
+
 //very first connection
 io.on('connection', function (socket) {
 	var room = "ithaca";
@@ -55,8 +66,8 @@ io.on('connection', function (socket) {
 });
 
 for(var i in instaFeeds) {
-	var data = i.data;
-	var name = i.name;
+	var data = instaFeeds[i].data;
+	var name = instaFeeds[i].name;
 	var callback = '/callback' + name;
 
 	app.get(callback, data.handshake);
@@ -70,11 +81,13 @@ function emitRecents(room, socket) {
 }
 
 function findRoom(room) {
-	for(var i = 0; i < instaFeeds.length; i++) {
-		if (instaFeeds[i].name == room) {
+	/*for(var i in instaFeeds) {
+		if (instaFeeds.i.name == room) {
 			return instaFeeds[i].data;
 		}
-	}
+	}*/
+
+	return instaFeeds[room].data;
 }
 
 exports.emitNewPost = function(room, object) {

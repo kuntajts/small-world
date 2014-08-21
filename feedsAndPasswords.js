@@ -1,5 +1,5 @@
 var instaFeeds = {
-	ithaca: {
+	"ithaca": {
 		name: "ithaca",
 		data: require('./routes/instagram/ithaca'),
 		clientID: "77298706852440abb566e7f08cfa29ae",
@@ -11,7 +11,7 @@ var instaFeeds = {
 			"cornelluniversity"
 		]
 	},
-	psu: {
+	"psu": {
 		name: "psu",
 		data: require('./routes/instagram/psu'),
 		clientID: "d83c63e8a8834fea8c3fc616734be9a1",
@@ -22,7 +22,7 @@ var instaFeeds = {
 		    "pennstateuniversity"
 		]
 	},
-	harvard: {
+	"harvard": {
 		name: "harvard",
 		data: require('./routes/instagram/harvard'),
 		clientID: "f6d061861e4f41e6bc5a56ea370b1828",
