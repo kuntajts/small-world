@@ -10,34 +10,35 @@ var cached = { data:
 };
 
 //setting both the client id and the secret id for instagram
-var clientID = 'd83c63e8a8834fea8c3fc616734be9a1',
-    clientSecret = '7f5b6eb75c464ddba7432f4ebcc48a14';
+exports.setInstagram = function(client, secret, tagsIn) {
+    clientID = client;
+    clientSecret = secret;
+    tags = tagsIn;
 
-//configuration for instagram-node-lib
-Instagram_psu.set('client_id', clientID);
-Instagram_psu.set('client_secret', clientSecret);
-Instagram_psu.set('callback_url', 'http://smallworld.jordantsmith.net/callback' + feedName);
-Instagram_psu.set('redirect_uri', 'http://smallworld.jordantsmith.net');
-Instagram_psu.set('maxSockets', 10);
+    //configuration for instagram-node-lib
+    Instagram_psu.set('client_id', clientID);
+    Instagram_psu.set('client_secret', clientSecret);
+    Instagram_psu.set('callback_url', 'http://smallworld.jordantsmith.net/callback' + feedName);
+    Instagram_psu.set('redirect_uri', 'http://smallworld.jordantsmith.net');
+    Instagram_psu.set('maxSockets', 10);
+
+    setSubscriptions();
+}
 
 //Instagram_psu.subscriptions.unsubscribe({ id: '11089334' });
 //https://api.instagram.com/v1/subscriptions?client_secret=7f5b6eb75c464ddba7432f4ebcc48a14&client_id=d83c63e8a8834fea8c3fc616734be9a1
 
-tags = [ 
-    "psu", 
-    "pennstate", 
-    "pennstateuniversity"
-];
-
-for (var i = 0; i < tags.length; i++) {
-    Instagram_psu.subscriptions.subscribe({
-        object: 'tag',
-        object_id: tags[i],
-        aspect: 'media',
-        callback_url: 'http://smallworld.jordantsmith.net/callback' + feedName,
-        type: 'subscription',
-        id: '3'
-    });
+function setSubscriptions() {
+    for (var i = 0; i < tags.length; i++) {
+        Instagram_psu.subscriptions.subscribe({
+            object: 'tag',
+            object_id: tags[i],
+            aspect: 'media',
+            callback_url: 'http://smallworld.jordantsmith.net/callback' + feedName,
+            type: 'subscription',
+            id: '3'
+        });
+    }
 }
 
 exports.firstShow = function() {

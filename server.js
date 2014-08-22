@@ -65,9 +65,16 @@ io.on('connection', function (socket) {
 	});
 });
 
+//set all feeds names, ids and passwords
 for(var i in instaFeeds) {
 	var data = instaFeeds[i].data;
 	var name = instaFeeds[i].name;
+	var clientID = instaFeeds[i].clientID;
+	var clientSecret = instaFeeds[i].clientSecret;
+	var tags = instaFeeds[i].tags;
+
+	data.setInstagram(clientID, clientSecret, tags);
+
 	var callback = '/callback' + name;
 
 	app.get(callback, data.handshake);
@@ -81,12 +88,6 @@ function emitRecents(room, socket) {
 }
 
 function findRoom(room) {
-	/*for(var i in instaFeeds) {
-		if (instaFeeds.i.name == room) {
-			return instaFeeds[i].data;
-		}
-	}*/
-
 	return instaFeeds[room].data;
 }
 

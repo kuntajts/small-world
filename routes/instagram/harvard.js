@@ -10,33 +10,40 @@ var cached = { data:
 };
 
 //setting both the client id and the secret id for instagram
-var clientID = 'f6d061861e4f41e6bc5a56ea370b1828',
-    clientSecret = '128ba7e2f7d14e3d9b0fd90e628ac79a';
+var clientID = '',
+    clientSecret = '';
+    tags = []
 
-//configuration for instagram-node-lib
-Instagram_harvard.set('client_id', clientID);
-Instagram_harvard.set('client_secret', clientSecret);
-Instagram_harvard.set('callback_url', 'http://smallworld.jordantsmith.net/callback' + feedName);
-Instagram_harvard.set('redirect_uri', 'http://smallworld.jordantsmith.net');
-Instagram_harvard.set('maxSockets', 10);
+exports.setInstagram = function(client, secret, tagsIn) {
+    clientID = client;
+    clientSecret = secret;
+    tags = tagsIn;
+
+    //configuration for instagram-node-lib
+    Instagram_harvard.set('client_id', clientID);
+    Instagram_harvard.set('client_secret', clientSecret);
+    Instagram_harvard.set('callback_url', 'http://smallworld.jordantsmith.net/callback' + feedName);
+    Instagram_harvard.set('redirect_uri', 'http://smallworld.jordantsmith.net');
+    Instagram_harvard.set('maxSockets', 10);
+
+    setSubscriptions();
+}
+
 
 //Instagram_harvard.subscriptions.unsubscribe({ id: '10993377' });
 //https://api.instagram.com/v1/subscriptions?client_secret=128ba7e2f7d14e3d9b0fd90e628ac79a&client_id=f6d061861e4f41e6bc5a56ea370b1828
 
-tags = [ 
-    "harvard", 
-    "harvarduniversity"
-];
-
-for (var i = 0; i < tags.length; i++) {
-    Instagram_harvard.subscriptions.subscribe({
-        object: 'tag',
-        object_id: tags[i],
-        aspect: 'media',
-        callback_url: 'http://smallworld.jordantsmith.net/callback' + feedName,
-        type: 'subscription',
-        id: '3'
-    });
+function setSubscriptions() {
+    for (var i = 0; i < tags.length; i++) {
+        Instagram_harvard.subscriptions.subscribe({
+            object: 'tag',
+            object_id: tags[i],
+            aspect: 'media',
+            callback_url: 'http://smallworld.jordantsmith.net/callback' + feedName,
+            type: 'subscription',
+            id: '3'
+        });
+    }
 }
 
 exports.firstShow = function() {

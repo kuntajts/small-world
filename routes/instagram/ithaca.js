@@ -10,35 +10,39 @@ var cached = { data:
 };
 
 //setting both the client id and the secret id for instagram
-var clientID = '77298706852440abb566e7f08cfa29ae',
-    clientSecret = '75610934c202477aacab453904000376';
+var clientID = '',
+    clientSecret = '';
+    tags = []
 
-//configuration for instagram-node-lib
-Instagram_ithaca.set('client_id', clientID);
-Instagram_ithaca.set('client_secret', clientSecret);
-Instagram_ithaca.set('callback_url', 'http://smallworld.jordantsmith.net/callback' + feedName);
-Instagram_ithaca.set('redirect_uri', 'http://smallworld.jordantsmith.net');
-Instagram_ithaca.set('maxSockets', 10);
+exports.setInstagram = function(client, secret, tagsIn) {
+    clientID = client;
+    clientSecret = secret;
+    tags = tagsIn;
 
-//SInstagram_ithaca.subscriptions.unsubscribe({ id: '11089298' });
+    //configuration for instagram-node-lib
+    Instagram_ithaca.set('client_id', clientID);
+    Instagram_ithaca.set('client_secret', clientSecret);
+    Instagram_ithaca.set('callback_url', 'http://smallworld.jordantsmith.net/callback' + feedName);
+    Instagram_ithaca.set('redirect_uri', 'http://smallworld.jordantsmith.net');
+    Instagram_ithaca.set('maxSockets', 10);
+
+    setSubscriptions();
+}
+
+//Instagram_ithaca.subscriptions.unsubscribe({ id: '11089298' });
 //https://api.instagram.com/v1/subscriptions?client_secret=75610934c202477aacab453904000376&client_id=77298706852440abb566e7f08cfa29ae
 
-tags = [ 
-    "ithaca", 
-    "ithacacollege", 
-    "cornell", 
-    "cornelluniversity"
-];
-
-for (var i = 0; i < tags.length; i++) {
-    Instagram_ithaca.subscriptions.subscribe({
-        object: 'tag',
-        object_id: tags[i],
-        aspect: 'media',
-        callback_url: 'http://smallworld.jordantsmith.net/callback' + feedName,
-        type: 'subscription',
-        id: '3'
-    });
+function setSubscriptions() {
+    for (var i = 0; i < tags.length; i++) {
+        Instagram_ithaca.subscriptions.subscribe({
+            object: 'tag',
+            object_id: tags[i],
+            aspect: 'media',
+            callback_url: 'http://smallworld.jordantsmith.net/callback' + feedName,
+            type: 'subscription',
+            id: '3'
+        });
+    }
 }
 
 exports.firstShow = function() {
