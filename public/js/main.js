@@ -197,12 +197,14 @@
             	self.lastLink = "";
             	$('#pictures').empty();
             	setTimeout(function() {
-            		var length = data.data.length;
-            		if (this.screenSize < 500) {
-            			length = 8;
+            		var size = data.data.length;
+            		var start = 0;
+            		if (self.screenSize < 500) {
+            			start = size - 8;
+            			size = 8;
             		}
-            		
-            		for (var i = 0; i < length; i++) {
+
+            		for (var i = start; i < size; i++) {
 	                	self.renderTemplate(data, i, true);
 	                }
             	}, 500);

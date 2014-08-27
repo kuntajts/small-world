@@ -82,7 +82,7 @@ function sendMessage(url) {
                 json = JSON.parse(jsonString);
             }
         }
-        if (json.data[0] != null && json.data != null && json != null) {
+        if (json != null && json.data !== undefined && json.data[0] !== undefined) {
             if (lastLink != json.data[0].link) {
                 app.emitNewPost(feedName, json);
                 cached.data.push(json.data[0]);
