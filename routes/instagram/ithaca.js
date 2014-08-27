@@ -11,8 +11,8 @@ var cached = { data:
 
 //setting both the client id and the secret id for instagram
 var clientID = '',
-    clientSecret = '';
-    tags = []
+    clientSecret = '',
+    tags = [];
 
 exports.setInstagram = function(client, secret, tagsIn) {
     clientID = client;
@@ -82,7 +82,7 @@ function sendMessage(url) {
                 json = JSON.parse(jsonString);
             }
         }
-        if (json.data[0] != null && json != null) {
+        if (json.data[0] != null && json.data != null && json != null) {
             if (lastLink != json.data[0].link) {
                 app.emitNewPost(feedName, json);
                 cached.data.push(json.data[0]);

@@ -11,8 +11,8 @@ var cached = { data:
 
 //setting both the client id and the secret id for instagram
 var clientID = '',
-    clientSecret = '';
-    tags = []
+    clientSecret = '',
+    tags = [];
 
 exports.setInstagram = function(client, secret, tagsIn) {
     clientID = client;
@@ -28,7 +28,6 @@ exports.setInstagram = function(client, secret, tagsIn) {
 
     setSubscriptions();
 }
-
 
 //Instagram_harvard.subscriptions.unsubscribe({ id: '10993377' });
 //https://api.instagram.com/v1/subscriptions?client_secret=128ba7e2f7d14e3d9b0fd90e628ac79a&client_id=f6d061861e4f41e6bc5a56ea370b1828
@@ -83,7 +82,7 @@ function sendMessage(url) {
                 json = JSON.parse(jsonString);
             }
         }
-        if (json.data[0] != null && json != null) {
+        if (json.data[0] != null && json.data != null && json != null) {
             if (lastLink != json.data[0].link) {
                 app.emitNewPost(feedName, json);
                 cached.data.push(json.data[0]);
