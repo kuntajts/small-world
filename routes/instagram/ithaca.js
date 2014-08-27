@@ -86,7 +86,7 @@ function sendMessage(url) {
             if (lastLink != json.data[0].link) {
                 app.emitNewPost(feedName, json);
                 cached.data.push(json.data[0]);
-                if (cached.data.length > 8) {
+                if (cached.data.length > 24) {
                     cached.data.shift();
                 }
                 lastLink = json.data[0].link;

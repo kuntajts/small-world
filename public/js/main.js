@@ -176,8 +176,8 @@
 			currentCaption = currentCaption.replace(/'/g, "&rsquo;");
 
 			var frontFlipButton = "<button class='btn btn-default flipButton'>flip</button>";
-			var backCard = "<div class='back'><a href='" + currentProfileLink + "'><h4>" + currentFullName + "</h4></a><p>" + currentCaption + "</p>" + frontFlipButton + "</div>";
-			var info = "<div class='pictureInfo'><a href='" + currentProfileLink + "'><h4>" + currentUserName + "</h4></a>"
+			var backCard = "<div class='back'><a href='" + currentProfileLink + "' target='_blank'><h4>" + currentFullName + "</h4></a><p>" + currentCaption + "</p>" + frontFlipButton + "</div>";
+			var info = "<div class='pictureInfo'><a href='" + currentProfileLink + "' target='_blank'><h4>" + currentUserName + "</h4></a>"
 				info = info + "<p>Filter: " + currentFilter + "</p></div>";
 
 			var result = "<div class='col-md-3 col-sm-6 flip-container'><div class='flipper'><div class='picture front animate'><a href='" + currentLink + "' ";
@@ -197,7 +197,12 @@
             	self.lastLink = "";
             	$('#pictures').empty();
             	setTimeout(function() {
-            		for (var i = 0; i < data.data.length; i++) {
+            		var length = data.data.length;
+            		if (this.screenSize < 500) {
+            			length = 8;
+            		}
+            		
+            		for (var i = 0; i < length; i++) {
 	                	self.renderTemplate(data, i, true);
 	                }
             	}, 500);
