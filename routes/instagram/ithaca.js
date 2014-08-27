@@ -30,8 +30,6 @@ exports.setInstagram = function(client, secret, tagsIn) {
 }
 
 //Instagram_ithaca.subscriptions.unsubscribe({ id: '11089298' });
-//https://api.instagram.com/v1/subscriptions?client_secret=75610934c202477aacab453904000376&client_id=77298706852440abb566e7f08cfa29ae
-
 function setSubscriptions() {
     for (var i = 0; i < tags.length; i++) {
         Instagram_ithaca.subscriptions.subscribe({

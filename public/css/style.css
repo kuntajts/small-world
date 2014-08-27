@@ -97,10 +97,9 @@ body {
 	display: inline-block;
 }
 
-#hideFooter {
-	float: right;
+#hideFooter{
 	margin-top: 5px;
-	margin-left: 10px;
+	margin-left: 5px;
 }
 
 .front .flipButton {
@@ -205,6 +204,25 @@ body {
 
 .selectBox:focus {
 	outline: none !important;
+}
+
+.aboutContainer a {
+	color: #0082c6;
+}
+
+.aboutContainer {
+	position: relative;
+	margin-left: 0;
+	margin-right: 0;
+	padding: 15px 15px;
+	margin: 0 -15px 15px;
+	background-color: #fff;
+	color: #FA6900;
+	border-width: 1px;
+	border-color: #FA6900;
+	border-radius: 4px;
+	border-style: solid;
+	box-shadow: none;
 }
 
 /*anything bigger than a tablet*/

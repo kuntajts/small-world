@@ -30,8 +30,6 @@ exports.setInstagram = function(client, secret, tagsIn) {
 }
 
 //Instagram_harvard.subscriptions.unsubscribe({ id: '10993377' });
-//https://api.instagram.com/v1/subscriptions?client_secret=128ba7e2f7d14e3d9b0fd90e628ac79a&client_id=f6d061861e4f41e6bc5a56ea370b1828
-
 function setSubscriptions() {
     for (var i = 0; i < tags.length; i++) {
         Instagram_harvard.subscriptions.subscribe({

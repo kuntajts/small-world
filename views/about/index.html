@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta id="viewport" name="viewport" content ="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="realtime instagram photos from colleges around the US">
+    <meta name="author" content="Jordan Smith">
+    <link href="../css/bootstrap/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+
+    <title>Small World | About</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div style="float:left;">
+            <h1>About: Small World</h1>
+            <a href="http://smallworld.jordantsmith.net">Back to the app!</a>
+        </div>
+        <!--<button class="btn btn-default addButton">Add PICTURE</button>--><iframe style="float:right; height:80px; margin-top:20px;" class="hidden-xs" src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.smallworld.jordantsmith.net%2F&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=80&amp;appId=374541719349165" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:80px;" allowTransparency="true"></iframe>
+    </div>
+
+    <div class="container">
+        <div class="aboutContainer col-md-12">
+            <h1>About This Small World</h1>
+            <p><a href="http://www.smallworld.jordantsmith.net">Small World</a> is a web appication written by entirely by <a href="http://www.jordantsmith.net">Jordan Smith</a>. The application uses <a href="http://instagram.com/developer/" target="_blank">Instagram's API</a> to update photos to the site in real time that were added by users using the certain hashtags in their caption. The application follows hastags that are associated with different colleges in America. These photos are generated only by those who have public Instagram acounts.</p>
+            <div class="col-md-12">
+                <h3>How to use the app?</h3>
+                <ul>
+                    <li>Watch each college's personality as photos come streaming in</li>
+                    <li>Click the 'flip' button to flip the picture and see the caption associated with the photo</li>
+                    <li>Change college streams by choosing a college using the drop down menu at the top of the page</li>
+                </ul>
+                <h3>How to see my photo?</h3>
+                <ul>
+                    <li>Ensure that your Instagram account is <a href="https://help.instagram.com/116024195217477/" target="_blank">publicly accessible</a></li>
+                    <li>Take a photo</li>
+                    <li>Upload it to Instagram using the hashtag pertaining to your college</li>
+                    <li>Watch the feed of your college instantly update with your photo</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="aboutContainer col-md-12">
+            <h1>What about the tech stuff?</h1>
+            <p>I'm glad you're here to peak under the hood. You can take a look at the source code of this project on <a href="https://github.com/kuntajts/small-world" target="_blank">github</a></p>
+            <p>This is application was inspired by <a href="http://now.jit.su/" target="_blank">This Is Now!</a> made by <a href="http://www.lexicalgap.com.au/" target="_blank">Lexical Gap</a> and <a href="http://www.lollagram.com/" target="_blank">lollagram</a> made by <a href="http://www.bymichaellancaster.com/" target="_blank">Michael Landcaster</a>. Likewise small world was built using Node.js on Express. For communication between the server and the client small world uses <a href="http://socket.io/" target="_blank">socket.io</a> which is a powerful node library that uses websockets. Finally to help out with the complication of Instagram's API, the module "instagram-node-lib" was used. On first run of the node server, the app subscribes to the hashtags for each college. Instagram notifies the app each time there is a new post. The serve then polls instagram for the json object of the new post. The connection between the client and the server is then used to send the object to the browser. A great deal of templating is done and the picture is displayed to the client. When the user picks a new feed, the page is wiped and the most recent photos from the new feed are displayed while it listens for new ones to come in. To fish through the specifics please check out my <a href="https://github.com/kuntajts/small-world" target="_blank">github</a> for source code!
+            </p>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <button id="hideFooter" class="btn btn-default visible-xs pull-right">Hide</button>
+            <a id="hideFooter" class="btn btn-default visible-xs pull-right" href="../">Back</a>
+            <a id="hideFooter" class="btn btn-default hidden-xs pull-left" href="../">Back</a>
+            <h1 id="currentTime"></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function startTime() {
+            var today = new Date();
+            var ampm = "am";
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            if (h > 11) {
+                ampm = "pm";
+            }
+            if (h > 12) {
+                h = h % 12;
+            } else if (h == 0) {
+                h = 12;
+            }
+            m = checkTime(m);
+            s = checkTime(s);
+            $("#currentTime").text(h + ":" + m + ":" + s + " " + ampm);
+            var t = setTimeout(function(){startTime()},500);
+        }
+
+        function checkTime(i) {
+            if (i<10) {i = "0" + i};  // add zero in front of numbers < 10
+            return i;
+        }
+
+        startTime();
+    </script>
+</body>
+</html>
