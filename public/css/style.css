@@ -45,7 +45,7 @@ body {
 	color: #F38630;
 }
 
-#currentTime {
+.currentTime {
 	margin: 0;
 	color: #0082c6;
 	float: left;
@@ -228,7 +228,7 @@ body {
 /*anything bigger than a tablet*/
 @media screen and (min-width: 768px) {
 
-	#currentTime {
+	.currentTime {
 		float: right;
 	}
 }

@@ -58,7 +58,8 @@
             <button id="hideFooter" class="btn btn-default visible-xs pull-right">Hide</button>
             <a id="hideFooter" class="btn btn-default visible-xs pull-right" href="../">Back</a>
             <a id="hideFooter" class="btn btn-default hidden-xs pull-left" href="../">Back</a>
-            <h1 id="currentTime"></div>
+            <h1 class="currentTime hidden-xs"></h1>
+            <h3 style="margin-top:10px;" class="currentTime visible-xs"></h3>
         </div>
     </div>
     <script type="text/javascript">
@@ -78,7 +79,7 @@
             }
             m = checkTime(m);
             s = checkTime(s);
-            $("#currentTime").text(h + ":" + m + ":" + s + " " + ampm);
+            $(".currentTime").text(h + ":" + m + ":" + s + " " + ampm);
             var t = setTimeout(function(){startTime()},500);
         }
 

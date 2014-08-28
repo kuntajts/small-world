@@ -248,7 +248,7 @@
 	    }
 	    m = checkTime(m);
 	    s = checkTime(s);
-	    $("#currentTime").text(h + ":" + m + ":" + s + " " + ampm);
+	    $(".currentTime").text(h + ":" + m + ":" + s + " " + ampm);
 	    var t = setTimeout(function(){startTime()},500);
 	}
 
