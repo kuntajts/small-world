@@ -106,6 +106,9 @@
 		},
 
 		renderTemplate: function(data, index, checklinks) {
+			if (data.data[index] === undefined || data.data[index].link == null) {
+				return;
+			}
 			var currentlink = data.data[index].link;
 			var thisPicture = data.data[index];
 			var currentcreatedtime = parseInt(data.data[index].created_time);
@@ -201,7 +204,9 @@
             		var start = 0;
             		if (self.screenSize < 500) {
             			start = size - 8;
-            			size = 8;
+            			if (start < 0) {
+            				start = 0;
+            			}
             		}
 
             		for (var i = start; i < size; i++) {
